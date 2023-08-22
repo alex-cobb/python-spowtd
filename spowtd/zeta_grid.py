@@ -20,6 +20,7 @@ def populate_zeta_grid(connection, grid_interval_mm):
     FROM water_level"""
     )
     zeta_bounds = cursor.fetchone()
+    #SA! added the +100 and -100 to increase the grid allowing to stretch past the highest zeta value from the WL timeseries
     cursor.executemany(
         """
     INSERT INTO discrete_zeta (zeta_number)
@@ -27,8 +28,8 @@ def populate_zeta_grid(connection, grid_interval_mm):
         [
             (zn,)
             for zn in range(
-                int(math.floor(zeta_bounds[0] / grid_interval_mm)),
-                int(math.ceil(zeta_bounds[1] / grid_interval_mm)),
+                int(math.floor(zeta_bounds[0]-100 / grid_interval_mm)),
+                int(math.ceil(zeta_bounds[1]+100 / grid_interval_mm)),
             )
         ],
     )

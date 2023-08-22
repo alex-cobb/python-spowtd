@@ -84,12 +84,10 @@ def generate_rise_tpl_file(
             for value in parameters['specific_yield']['zeta_knots_mm']
         ]
         lines += ['  sy_knots:  # Specific yield, dimensionless']
-        lines += [
-            '    - @sy_knot_{}@'.format(str(i).ljust(16))
-            for i in range(
-                1, len(parameters['specific_yield']['sy_knots']) + 1
-            )
-        ]
+        lines += ['    - @sy_knot_{}@'.format(str(i).ljust(23))
+                  for i in
+                  range(1,
+                        len(parameters['specific_yield']['sy_knots']) + 1)]
     lines += ['transmissivity:']
     if parameters['transmissivity']['type'] == 'peatclsm':
         lines += [
@@ -267,12 +265,10 @@ def generate_curves_tpl_file(
             for value in parameters['specific_yield']['zeta_knots_mm']
         ]
         lines += ['  sy_knots:  # Specific yield, dimensionless']
-        lines += [
-            '    - @sy_knot_{}@'.format(str(i).ljust(16))
-            for i in range(
-                1, len(parameters['specific_yield']['sy_knots']) + 1
-            )
-        ]
+        lines += ['    - @sy_knot_{}@'.format(str(i).ljust(23))
+                  for i in
+                  range(1,
+                        len(parameters['specific_yield']['sy_knots']) + 1)]
     lines += ['transmissivity:']
     if parameters['transmissivity']['type'] == 'peatclsm':
         lines += [
